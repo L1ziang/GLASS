@@ -20,3 +20,15 @@ Please refer to ./stylegan2-pytorch-master_mlp8_mixing=0.9
 [StyleGAN](https://github.com/rosinality/stylegan2-pytorch)
 
 [StyleGAN-XL](https://github.com/autonomousvision/stylegan-xl)
+
+## 📜 Citation
+```
+@article{li2023gan,
+  title={GAN you see me? enhanced data reconstruction attacks against split inference},
+  author={Li, Ziang and Yang, Mengda and Liu, Yaxin and Wang, Juan and Hu, Hongxin and Yi, Wenzhe and Xu, Xiaoyang},
+  journal={Advances in Neural Information Processing Systems},
+  volume={36},
+  pages={54554--54566},
+  year={2023}
+}
+```
