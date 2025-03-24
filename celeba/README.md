@@ -64,7 +64,7 @@ python adv_defense.py --config_file config_adv.yaml --stage advtrain --index 11
 python NoPeek_defense.py --config_file config_NoPeek.yaml --stage noisytrain --index 12
 ```
 
-- **Siamese Defense+** [A hybrid deep learning architecture for privacy-preserving mobile analytics](https://ieeexplore.ieee.org/abstract/document/8962332)
+- **Siamese Defense** [A hybrid deep learning architecture for privacy-preserving mobile analytics](https://ieeexplore.ieee.org/abstract/document/8962332)
 ```bash
 python siamese_defense.py --config_file config_siamese.yaml --stage noisytrain --index 13
 ```
