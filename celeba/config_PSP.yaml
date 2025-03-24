@@ -1,0 +1,217 @@
+#sample_argument:
+#type || default value
+#value
+#print_freq  int || 10  
+#resume      bool || False     * resume from checkpoint
+#gpu_id      int  || null      * gpu id to use
+#epochs      int  || 200       * number of training epochs for chosen stage
+#optimizer   str  || sgd       * optimizer for the chosen stage
+#lr          float || 0.1      * learning rate
+#lr_scheduler str || default,cosine  * learning rate scheduler
+#arch        str  || resnet18  * architecture of model
+#save_model  str  || saved_model.pth * filename to save model
+#load_model  str  || loaded_model.pth  * filename to load model
+#workers     int  || 16        * number of threads for loading images
+#logging     bool || False     * whether to log files
+#model_dir   str  || models      * destination folder to drop model file
+#log_dir     str  || logs      * destination folder to drop log file
+#smooth_eps  float|| 0.0       * smoothing rate [0.0, 1.0], set to 0.0 to disable
+#alpha       float|| 0.0       * for mixup training, lambda = Beta(alpha, alpha) distribution. Set to 0.0 to disable
+#                              * chosen value of alpha in Bag of Tricks is 0.2, and increase # of training epochs by 67%
+#warmup_epochs      int  || 0       * number of epochs for lr warmup
+#warmup_lr      float  || 0.0001       * initial lr before warmup
+
+
+
+general:
+  random_seed:
+    1
+  print_freq:
+    50
+  resume:  
+    False 
+  gpu_id:  
+    0
+  workers: 
+    0
+  arch: 
+    face_cnn
+  width_multiplier:
+    default
+  model_dir: 
+    models
+  log_dir: 
+    logs
+  init_func:
+    default
+  smooth_eps:
+    0.0
+  alpha:
+    0.0
+pretrain:
+  epochs: 
+    200
+  optimizer:
+    sgd
+  lr:
+    0.1
+  lr_scheduler: 
+    cosine
+  save_model: 
+    # face_cnn.pth
+    face_aux.pth
+  auxiliary:
+    # False 
+    True
+validate:
+  load_model: 
+    # cifar10_cnn.pth
+    # cifar10_aux.pth
+    # cifar10_adv.pth
+    cifar10_dp.pth
+  split_index:
+    14
+  noise_scale:
+    5.0
+  dcor_weighting:
+    0.0
+inversion:
+  epochs: 
+    # 50
+    30
+  optimizer:
+    adam
+  lr:  
+    0.001
+  lr_scheduler: 
+    default
+  save_model: 
+    # celeba_inv_layer3.pth
+    # celeba_inv_16*16.pth
+    # celeba_inv_8*8.pth
+    # celeba_inv_4*4.pth
+  load_model: 
+    celeba_3000_attractive.pth
+    # celeba_adv_layer2_1_ckpt.pth
+  layers:
+    ['layer2']
+  # split_index:
+  #   14
+  # noise_scale:
+  #   5.0
+  plot:
+    True
+advtrain:
+  epochs:
+    50
+  ckpt_interval:
+    10
+  optimizer: 
+    adam
+  lr:
+    0.001
+  lr_scheduler:
+    default
+  save_model: 
+    celeba_adv_8*8_55.pth
+  load_model:
+    face_cnn.pth
+  layers:
+    ['layer3']
+  inv_lr:
+    0.001
+  num_steps:
+    5
+  gamma:
+    5
+  load_inv_model:
+    celeba_inv_8*8.pth
+noisytrain:
+  epochs:
+    50
+  optimizer: 
+    adam
+  lr:
+    0.001
+  lr_scheduler:
+    default
+  save_model: 
+    cifar10_dp.pth
+  split_index:
+    14
+  noise_scale:
+    5.0
+  dcor_weighting:
+    0.0
+antitrain:
+  epochs:
+    50
+  optimizer: 
+    adam
+  lr:
+    0.001
+  lr_scheduler:
+    default
+  save_model: 
+    cifar10_anti-adv.pth
+    # cifar10_anti-dp.pth
+  load_model:
+    cifar10_adv.pth
+    # cifar10_dp.pth
+  load_aux_model:
+    cifar10_aux.pth
+  layers:
+    ['features.13']
+    # ['noise_layer']
+  aux_layers:
+    ['features.13']
+  # split_index:
+  #   14
+  # noise_scale:
+  #   5.0
+  inv_lr:
+    0.001
+  beta:
+    0.0
+  plot:
+    True
+
+Gan:
+  epochs: 
+    # 10000
+  optimizer:
+    adam
+  lr:  
+    1e-2
+  lr_scheduler: 
+    default
+  load_model: 
+    celeba_3000_attractive.pth
+  layers:
+    ['layer2']
+  lambda_TV:
+    # 0.1
+    0.01
+  lambda_l2:
+    0.01
+  lambda_KLD:
+    # 10
+    # 1
+  AMSGrad:
+    True
+  inverse_num:
+    40
+  # split_index:
+  #   14
+  # noise_scale:
+  #   0
+  plot:
+    False
+  save_model:
+    None
+  iter_z:
+    # 100
+  iter_w:
+    8000
+  restarts:
+    # 30
