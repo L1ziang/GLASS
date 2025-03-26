@@ -1,6 +1,7 @@
 ## 🔍 Datasets & GAN models
-- [./data](https://pan.baidu.com/s/1KEHREObxO19KtICAEfJeew?pwd=6qkj)
-- [./models](https://pan.baidu.com/s/1xOwdoUQPrODnCVjEqzc7iQ?pwd=ehfc)
+- [./data](https://pan.baidu.com/s/16b_U5v1Ln7USR9XhhkdCTA?pwd=gfmn)
+- [./models](https://pan.baidu.com/s/1unId4mpO6T7LQMTDEIgMSw?pwd=6cj3)
+
 
 ## 🗡️ Attacks
 
